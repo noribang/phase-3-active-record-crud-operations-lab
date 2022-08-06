@@ -48,4 +48,36 @@ class Movie < ActiveRecord::Base
         Movie.where(["release_date > ?", "2002"])
     end
 
+    # Update
+    # #update_with_attributes
+    # updates one movie
+    def update_with_attributes(attributes)
+        self.update(attributes)
+    end
+
+    # .update_all_titles
+    # updates the title of all the movies 
+    def self.update_all_titles(title)
+        self.update(title: title)
+        # Movie.update(title: title)
+    end
+
+
+    # Delete
+    # .delete_by_id
+    # deletes the record with the corresponding id
+    def self.delete_by_id(id)
+        # instance_movie = self.find(id)
+        instance_movie = Movie.find(id)
+        instance_movie.destroy
+
+    end
+
+    # .delete_all_movies
+    # deletes all the movies from the movies table
+    def self.delete_all_movies
+        self.destroy_all
+        # Movie.destroy_all
+    end
+
 end
